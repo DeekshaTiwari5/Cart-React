@@ -1,19 +1,23 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            price: 999,
-            title: 'Mobile Phone',
-            qty: 1, // shallow merging : react will change only qty in the state and not change other properties
-            img: ""
 
-        }
+
+
+    ///////BECAUSE OF PROPS WE DIDNOT NOT NEED THIS PROPERTIES
+    // constructor(){
+    //     super();
+    //     this.state = {
+    //         price: 999,
+    //         title: 'Mobile Phone',
+    //         qty: 1, // shallow merging : react will change only qty in the state and not change other properties
+    //         img: ""
+
+    //     }
        // this.increaseQuantity = this.increaseQuantity.bind(this);//2 nd way
     //    this.testing();
 
-    }
+    // }
     //react do batching by default and setState call is asynch
     //batching hold true in  react eventhandlers in every eventhandler but every time its not true in AJX and if using promises react would't do batching and setState call will act like synch call
 //    testing(){
@@ -137,10 +141,13 @@ class CartItem extends React.Component {
 
 
     render () {
-        console.log('render');
-        const { price, title, qty } = this.state; // destructuring
+        ///console.log('render');
+        console.log('this.props',this.props);
+        const { price, title, qty } = this.props.product;//iinstead of state props used
+        //const { price, title, qty } = this.state; // destructuring
         return (
          <div className='cart-item'>
+            {this.props.jsx}
             <div className='left-block'>
                 <img style={styles.image}/>
 
