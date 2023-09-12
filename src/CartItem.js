@@ -11,7 +11,7 @@ class CartItem extends React.Component {
 
         }
        // this.increaseQuantity = this.increaseQuantity.bind(this);//2 nd way
-       this.testing();
+    //    this.testing();
 
     }
     //react do batching by default and setState call is asynch
