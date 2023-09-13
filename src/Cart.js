@@ -34,7 +34,42 @@ class Cart extends React.Component {
     ]
   }
 }
+   handleIncreaseQuantity = (product) => {
+    console.log('Heyy please inc the qty of',product);
+    const { products } = this.state;
+    const index = products.indexOf(product);
 
+    products[index].qty += 1;
+
+    this.setState({
+        products: products
+    })
+   }
+
+   handleDecreaseQuantity = (product) => {
+    console.log('Hey please dec the qty of',product);
+    const { products } = this.state;
+    const index = products.indexOf(product);
+   
+    if(products[index].qty === 0){
+        return;
+    }
+    products[index].qty -= 1;
+
+    this.setState({
+        products: products
+    })
+   }
+
+   handleDeleteProduct = (id) => {
+    const { products } = this.state;
+
+    const items = products.filter((item) => item.id !== id); // [{}]
+
+    this.setState({
+        products:items
+    })
+   }
     render () {
         const {products} =this.state;
         // const arr = [1,2,3,4,5]; //render list
@@ -45,17 +80,13 @@ class Cart extends React.Component {
                     <CartItem 
                        product={product} 
                        key={product.id}
+                       onIncreaseQuantity={this.handleIncreaseQuantity}
+                       onDecreaseQuantity={this.handleDecreaseQuantity}
+                       onDeleteProduct={this.handleDeleteProduct}
                     />
                     )
                 })}
-                {/* {arr.map((item) => {  // render list in our component
-                    return item + 5
-                })} */}
-               {/* <CartItem qty={1} price ={99} title={"Watch"} img={''}/>  {/*define prop property which are used by prop items itself */}   
-               {/* props: arguments passed to function*/}
-               {/* <CartItem/> // we are getting same mobile option instead of diff like watch etc
-               <CartItem/>
-               <CartItem/> */}
+               
             </div>
             
         //    <div>CART</div>
