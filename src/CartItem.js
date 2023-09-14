@@ -1,22 +1,23 @@
 import React from 'react';
 
-class CartItem extends React.Component {
-    render () {
+// class CartItem extends React.Component {
+    const CartItem = (props) =>{
+    // render () {
         ///console.log('render');
-        console.log('this.props',this.props);
-        const { price, title, qty } = this.props.product;//iinstead of state props used
+        // console.log('this.props',this.props);
+        const { price, title, qty } = props.product;//instead of state props used, we removed this because it not class anymore
         //const { price, title, qty } = this.state; // destructuring
         const { 
             product,
             onIncreaseQuantity,
             onDecreaseQuantity,
             onDeleteProduct
-        } = this.props;
+        } = props; //}=this.props; //this was removed cous of function formationg we change it fron class to func()
         return (
          <div className='cart-item'>
-            {this.props.jsx}
+            {/* {this.props.jsx} */}
             <div className='left-block'>
-                <img style= {styles.image} />
+                <img style= {styles.image} src={product.img}/>
 
             </div>
             <div className='right-block'>
@@ -56,7 +57,7 @@ class CartItem extends React.Component {
          </div>
         );
     }
-}
+// }
 
 const styles = {
     image:{
